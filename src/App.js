@@ -5,8 +5,8 @@ import Balance from './store/Balance';
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Your Money Bag</h1>
+    <div className='App justify-content-center'>
+      <h1 className='text-center'>Welcome to Money Bag</h1>
       {/* Balance component */}
       <Balance />
     </div>

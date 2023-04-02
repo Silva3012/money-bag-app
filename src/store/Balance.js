@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deposit, withdrawal, interest, charge} from "./balanceSlice";
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+
 
 //Component that retrieves the current balance from the Redux store and display it.
 const Balance = () => {
@@ -68,25 +70,32 @@ const Balance = () => {
     }
 
     return (
-        <div>
-            {/* Display the current balance */}
-            <h2>Current Balance</h2>
-            <p>R{balance.balance.toFixed(2)}</p>
-            {/* Input filed for user to input a deposit */}
-            <input 
-                type="text"
-                value={inputAmount}
-                onChange={handleInputChange}
-                placeholder="Enter an amount"
-            />
+        <Container className="d-flex justify-content-center">
+            <Row>
+                <Col>
+                    {/* Display the current balance */}
+                    <h2 className="text-center">Current Balance</h2>
+                    <p className="text-center">R{balance.balance.toFixed(2)}</p>
+                    {/* Input filed for user to input a deposit */}
+                    <Form.Control 
+                        type="text"
+                        value={inputAmount}
+                        onChange={handleInputChange}
+                        placeholder="Enter an amount"
+                        className="mb-3"
+                    />
+                </Col>
 
-            {/* Buttons for deposit, withdrawal, interest, and charge functions */}
-            <button onClick={handleDeposit}>Deposit</button>
-            <button onClick={handleWithdrawal}>Withdrawal</button>
-            <button onClick={handleInterest}>Interest</button>
-            <button onClick={handleCharge}>Charge</button>
-        </div>
-    )
+                <Col lg className="d-flex flex-column">
+                    {/* Buttons for deposit, withdrawal, interest, and charge functions */}
+                    <Button className="w-100 my-2" variant="primary" onClick={handleDeposit}>Deposit</Button>
+                    <Button className="w-100 my-2" variant="outline-primary" onClick={handleWithdrawal}>Withdraw</Button>
+                    <Button className="w-100 my-2" variant="secondary" onClick={handleInterest}>Interest</Button>
+                    <Button className="w-100 my-2" variant="outline-secondary" onClick={handleCharge}>Charge</Button>
+                </Col>
+            </Row>
+        </Container>
+    )    
 };
 
 export default Balance;
